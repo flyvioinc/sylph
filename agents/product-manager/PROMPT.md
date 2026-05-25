@@ -7,7 +7,7 @@ Execute in order.
 ## 0. Load context
 
 1. Read `agents/product-manager/ROLE.md`
-2. Read `.claude/CONTEXT.md`
+2. Read `CONTEXT.md` (Flyvio company facts)
 3. Read the latest 2 files in `agents/product-manager/_logs/`
 4. Determine today's date
 
@@ -15,32 +15,21 @@ Execute in order.
 
 ## 1. Check for new customer feedback
 
-### Sources to scan
-
-1. **Meeting notes (Granola):** Query for meetings from yesterday. Extract any product feedback, feature requests, bug reports, or pain points mentioned.
-2. **Slack:** Scan customer-facing channels and internal product channels for feedback threads from the last 24 hours.
-3. **Email (Gmail):** Search for threads containing product feedback, bug reports, or feature requests from the last 24 hours.
-
-### Evaluate each piece of feedback
-
-For each item found:
-- Is it actionable? (specific enough to act on)
-- Does a similar issue already exist? (search GitHub issues)
-- Is it a bug, feature request, or improvement?
+> **Stage note:** Flyvio is pre-launch with no TMC customers yet. Skip this section until customers exist.
+>
+> When customers exist, sources to scan will be:
+> - **Support email** [CONFIGURE: which inbox]
+> - **Slack** [CONFIGURE: which channels — TMC partner channel, internal product channel]
+> - **Meeting notes** [CONFIGURE: Granola or equivalent]
 
 ---
 
-## 2. Create issues for actionable feedback
+## 2. Monitor open issues
 
-For each new actionable item:
-
-1. Search existing GitHub issues to avoid duplicates
-2. If no duplicate exists, create a new issue:
-   - **Title:** Clear, specific, starts with a verb
-   - **Body:** Problem statement + Expected behavior (no Impact section)
-   - **Labels:** `bug` / `enhancement` / `feature-request` + priority label
-   - **Source:** Note where the feedback came from (meeting, Slack, email)
-3. If a duplicate exists, add a comment with the new data point
+1. Fetch open issues in the Flyvio GitHub repo(s) [CONFIGURE: repo URLs once public/created]
+2. Flag any issue with no activity > 5 days
+3. For each blocked issue, check whether the blocker is resolved
+4. If Rastko surfaced new bugs or scope in conversation that aren't tracked, propose new issues (do not create without confirmation)
 
 ---
 
@@ -50,18 +39,19 @@ For each new actionable item:
 
 1. Fetch open PRs
 2. Flag any PR with no review activity for > 2 days
-3. Note the author and requested reviewers
+3. Note the author and requested reviewers (today: solo founder — flag as self-review needed)
 
 ### Merged PRs
 
 1. Fetch PRs merged since yesterday
 2. For each: note title, what changed, downstream impact
-3. Flag any that need: docs update, changelog entry, customer notification
+3. Flag any that need: docs update, changelog entry, future release-note copy
 
 ### Breaking changes
 
 Flag any PR that:
-- Changes API contracts
+- Changes the NDC connector contract (request/response shapes, supported message versions)
+- Changes the OBT public API or UI workflow
 - Modifies database schema
 - Removes or renames public features
 - Has a large diff (>500 lines) without adequate description
@@ -92,8 +82,8 @@ author: product-manager
 ## PRs needing attention
 - #<number>: <title> - <why> (e.g., no review 3 days)
 
-## Feedback received (not yet actioned)
-- <item> - <reason for deferral>
+## Scope / roadmap notes
+- <item>
 
 ## Blockers
 - <item>

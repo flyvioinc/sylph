@@ -32,10 +32,19 @@ The CAO reviews and approves.
 
 ## Registry
 
-| Employee | Cadence | Cron | Task ID |
-|----------|---------|------|---------|
-| chief-of-staff | Daily 8:00 AM | `0 8 * * *` | `chief-of-staff-daily` |
-| cmo | Daily 8:30 AM | `30 8 * * *` | `cmo-daily` |
-| product-manager | Daily 9:00 AM | `0 9 * * *` | `product-manager-daily` |
-| customer-success | Weekly Monday 9:30 AM | `30 9 * * 1` | `csm-weekly` |
-| head-of-data | Daily 9:00 AM | `0 9 * * *` | `head-of-data-daily` |
+Active agents at Flyvio (as of `/sylph-setup`):
+
+| Employee | Status | Cadence | Cron | Task ID |
+|----------|--------|---------|------|---------|
+| chief-of-staff | **Active** | Daily 8:00 AM ET | `0 8 * * *` | `chief-of-staff-daily` |
+| product-manager | **Active** | Daily 9:00 AM ET | `0 9 * * *` | `product-manager-daily` |
+| brand-designer | **Active** | On-demand | — | — |
+| cmo | Inactive | — | — | — |
+| customer-success | Inactive | — | — | — |
+| head-of-data | Inactive | — | — | — |
+| head-of-sales | Inactive | — | — | — |
+| executive-assistant | Inactive | — | — | — |
+
+Inactive agents are kept in `agents/<name>/` with default templates. Activate by personalizing `ROLE.md` + `PROMPT.md` and registering a scheduled task.
+
+Cron times use Eastern Time (Aventura, FL). Adjust if scheduling infrastructure uses UTC.

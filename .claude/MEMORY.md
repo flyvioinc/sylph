@@ -12,3 +12,6 @@ Claude updates this file when it learns something non-obvious:
 
 Format: - [Short title](memory/filename.md) - one-line description
 -->
+
+- [CAO profile](memory/cao_profile.md) — Rastko (he/him) owns this repo; address him by name, use he/him pronouns in all generated content.
+- [Active agent roster](memory/agent_roster.md) — chief-of-staff, product-manager, brand-designer are active; sales/CS/data/EA/CMO inactive at this stage.
